@@ -4,10 +4,16 @@ public class Carta {
 
 	private String valor;
 	private char palo;
+	private boolean bocaArriba=true;
 	
 	
 	
-	
+	public boolean isBocaArriba() {
+		return bocaArriba;
+	}
+	public void setBocaArriba(boolean girada) {
+		this.bocaArriba = girada;
+	}
 	public String getValor() {
 		return valor;
 	}
@@ -22,7 +28,12 @@ public class Carta {
 	}
 	
 	public String toString() {
-		return "["+valor + palo+"]";
+		String devolver="["+valor +""+palo;
+		if(bocaArriba) {
+			devolver+="]";
+		}
+		else devolver +="*]";
+		return devolver;
 	}
 	
 }

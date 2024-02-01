@@ -47,13 +47,56 @@ public class Baraja {
 				return carta;
 			}
 
-
+public void Barajar() {
+	int i=0;
+	while(i<20) {
+		
+		
+	int pos1=(int)(Math.random()*52);
+	int pos2=(int)(Math.random()*52);
+	if(pos1!=pos2) {
+		Intercambiar(pos1,pos2);
+		i++;
+	}
 	
+	}
+}
+	private void Intercambiar(int pos1,int pos2) {
+		
+		Carta Temporal=cartas[pos1];
+			cartas[pos1]=cartas[pos2];
+			cartas[pos2]=Temporal;
+			
+		}
 	public String toString() {
 		return "Baraja [cartas=" + Arrays.toString(cartas) + "]";
 	}
 	
+	public void voltearCarta(String valor,char palo) {
+		Carta carta=buscarCarta(valor,palo);
+		
+		carta.setBocaArriba(false);
+		
+	}
 	
-	
+	private Carta buscarCarta(String valor,char palo) {
+		Carta devolver=null;
+		int i=0;
+		boolean encontrado=false;
+		
+		while(i<cartas.length&&(!encontrado)) {
+			
+			if(cartas[i].getValor()==valor &&
+					cartas[i].getPalo()==palo) {
+				encontrado=true;
+				devolver=cartas[i];
+			}
+			
+			i++;
+		}
+		
+		
+		return devolver;
+	}
 	
 }
